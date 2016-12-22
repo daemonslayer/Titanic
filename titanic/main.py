@@ -9,7 +9,7 @@ from tabulate import tabulate
 from matplotlib import pyplot as plt
 import matplotlib
 import numpy as np
-
+import cPickle
 
 ######################################
 warnings.filterwarnings('ignore')
@@ -441,6 +441,9 @@ print('Best Score: {}'.format(grid_search.best_score_))
 print('Best Parameters: {}'.format(grid_search.best_params_))
 
 
+# store the model for future predictions
+with open('../misc/output/model.cpickle', 'wb') as f:
+    cPickle.dump(grid_search, f)
 
 
 
