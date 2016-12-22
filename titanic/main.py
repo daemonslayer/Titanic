@@ -432,7 +432,8 @@ parameter_grid = {
     'criterion': ['gini', 'entropy']
 }
 
-cross_validation = StratifiedKFold(targets, n_folds=5)
+skf = StratifiedKFold(n_splits=5)
+cross_validation = skf.get_n_splits(targets)
 grid_search = GridSearchCV(forest, param_grid=parameter_grid, cv=cross_validation)
 grid_search.fit(train_new, targets)
 
